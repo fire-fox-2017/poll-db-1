@@ -58,6 +58,17 @@ select congress_members.id, congress_members.location, table_b.total_votes from 
 
 
 
+select table_1.first_name, table_1.last_name, table_1.gender, table_2.politician_id, table_1.congress_member_name, table_2.total_votes from
+(select table_b.first_name as first_name, table_b.last_name as last_name, table_b.gender as gender , congress_members.name as congress_member_name, congress_members.location as location
+from
+(select voters.first_name, voters.last_name, voters.gender, votes.politician_id as politician_id from voters inner join votes on voters.id = votes.id where voters.id in (select voter_id from votes where politician_id in (select politician_id from votes group by politician_id order by count(*) desc limit 10))) as table_b
+inner join congress_members on congress_members.id = table_b.politician_id) as table_1
+inner join
+(select congress_members.id as politician_id, congress_members.location as location, table_b.total_votes as total_votes from congress_members inner join (select politician_id, count(*) as total_votes from votes group by politician_id order by count(*) desc limit 10) as table_b on congress_members.id = table_b.politician_id
+) as table_2
+on table_1.location = table_2.location;
+
+
 
 ```
 
@@ -65,4 +76,35 @@ select congress_members.id, congress_members.location, table_b.total_votes from 
 
 <!-- 4. List orang-orang yang vote lebih dari dua kali. Harusnya mereka hanya bisa vote untuk posisi Senator dan satu lagi untuk wakil. Wow, kita dapat si tukang curang! Segera laporkan ke KPK!! -->
 
+```
+select voters.first_name, voters.last_name, voters.gender, table_b.politician_id, table_b.total_votes
+from voters
+inner join
+(select voter_id, politician_id, count(*) as total_votes from votes group by voter_id having count(*) > 1) as table_b
+on voters.id = table_b.voter_id
+order by table_b.total_votes desc;
+
+ or
+
+select voters.first_name, voters.last_name, count(*) total_votes
+from votes join voters on votes.voter_id = voters.id
+group by votes.voter_id
+having total_votes > 1
+
+```
+
+
+
+
 <!-- 5. Apakah ada orang yang melakukan vote kepada politisi yang sama dua kali? Siapa namanya dan siapa nama politisinya? -->
+
+```
+select voters.first_name, voters.last_name, voters.gender, table_b.politician_id, congress_members.name, table_b.total_votes
+from voters
+inner join
+(select voter_id, politician_id, count(*) as total_votes from votes group by voter_id having count(*) = 2) as table_b
+on voters.id = table_b.voter_id
+join congress_members on table_b.politician_id = congress_members.id
+order by table_b.total_votes desc;
+
+```
