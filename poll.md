@@ -1,14 +1,24 @@
 <!-- Release 1  -->
 
-<!-- 1. Hitung jumlah vote untuk Sen. Olympia Snowe yang memiliki id 524. -->
+1. Hitung jumlah vote untuk Sen. Olympia Snowe yang memiliki id 524
+Answer : select count(*) from votes where politician_id = 524  
 
-<!-- 2. Sekarang lakukan JOIN tanpa menggunakan id `524`. Query kedua tabel votes dan congress_members. -->
 
-<!-- 3. Sekarang gimana dengan representative Erik Paulsen? Berapa banyak vote yang dia dapatkan? -->
+2. Sekarang lakukan JOIN tanpa menggunakan id `524`. Query kedua tabel votes dan congress_members.
+Answer : select * from congress_members left join votes on congress_members.id = votes.politician_id where congress_members.name = "Sen. Olympia Snowe"
 
-<!-- 4. Buatlah daftar peserta Congress yang mendapatkan vote terbanyak. Jangan sertakan field `created_at` dan `updated_at`. -->
 
-<!-- 5. Sekarang buatlah sebuah daftar semua anggota Congress yang setidaknya mendapatkan beberapa vote dalam urutan dari yang paling sedikit. Dan juga jangan sertakan field-field yang memiliki tipe date. -->
+3. Sekarang gimana dengan representative Erik Paulsen? Berapa banyak vote yang dia dapatkan?
+Answer : select count(*) from congress_members left join votes on congress_members.id = votes.politician_id where congress_members.name = "Rep. Erik Paulsen"
+
+
+4. Buatlah daftar peserta Congress yang mendapatkan vote terbanyak. Jangan sertakan field `created_at` dan `updated_at`.
+Answer : select congress_members.id, congress_members.name, congress_members.party, congress_members.location, congress_members.grade_1996, congress_members.grade_current, congress_members.years_in_congress, congress_members.dw1_score, count(votes.id) as number_of_votes from  votes join congress_members on congress_members.id = votes.politician_id group by votes.politician_id order by number_of_votes desc limit 3
+
+
+5. Sekarang buatlah sebuah daftar semua anggota Congress yang setidaknya mendapatkan beberapa vote dalam urutan dari yang paling sedikit. Dan juga jangan sertakan field-field yang memiliki tipe date.
+Answer : select congress_members.id, congress_members.name, congress_members.party, congress_members.location, congress_members.grade_1996, congress_members.grade_current, congress_members.years_in_congress, congress_members.dw1_score, count(votes.id) as number_of_votes from  votes join congress_members on congress_members.id = votes.politician_id group by votes.politician_id order by number_of_votes asc limit 3
+
 
 <!-- Release 2  -->
 
