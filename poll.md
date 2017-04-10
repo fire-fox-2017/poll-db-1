@@ -10,10 +10,10 @@
 <!--select count(*) from votes left join congress_members on votes.politician_id = congress_members.id where congress_members.name ="Rep. Erik Paulsen"; -->
 
 <!-- 4. Buatlah daftar peserta Congress yang mendapatkan vote terbanyak. Jangan sertakan field `created_at` dan `updated_at`. -->
-<!-- select congress_members.id, congress_members.name, congress_members.party, congress_members.location, congress_members.grade_1996, congress_members.grade_current, congress_members.years_in_congress, congress_members.dw1_score, count(votes.id) as total_votes from votes join congress_members on congress_members.id = votes.politician_id group by votes.politician_id order by total_votes desc;
+<!-- select congress_members.id, congress_members.name, congress_members.party, congress_members.location, congress_members.grade_1996, congress_members.grade_current, congress_members.years_in_congress, congress_members.dw1_score, count(votes.id) as total_votes from votes join congress_members on congress_members.id = votes.politician_id group by votes.politician_id order by total_votes desc limit 3;
 
 <!-- 5. Sekarang buatlah sebuah daftar semua anggota Congress yang setidaknya mendapatkan beberapa vote dalam urutan dari yang paling sedikit. Dan juga jangan sertakan field-field yang memiliki tipe date. -->
-<!-- select congress_members.id, congress_members.name, congress_members.party, congress_members.location, congress_members.grade_1996, congress_members.grade_current, congress_members.years_in_congress, congress_members.dw1_score, count(votes.id) as number_of_votes from votes join congress_members on congress_members.id = votes.politician_id group by votes.politician_id order by number_of_votes asc -->
+<!-- select congress_members.id, congress_members.name, congress_members.party, congress_members.location, congress_members.grade_1996, congress_members.grade_current, congress_members.years_in_congress, congress_members.dw1_score, count(votes.id) as number_of_votes from votes join congress_members on congress_members.id = votes.politician_id group by votes.politician_id order by number_of_votes asc limit 3 -->
 
 <!-- Release 2  -->
 
