@@ -21,3 +21,10 @@
 <!-- 4. List orang-orang yang vote lebih dari dua kali. Harusnya mereka hanya bisa vote untuk posisi Senator dan satu lagi untuk wakil. Wow, kita dapat si tukang curang! Segera laporkan ke KPK!! -->
 
 <!-- 5. Apakah ada orang yang melakukan vote kepada politisi yang sama dua kali? Siapa namanya dan siapa nama politisinya? -->
+
+1. select count(id) from votes where politician_id =524;
+2. select*from congress_members inner join votes on congress_members.id = votes.politician_id where congress_members.id=524;
+3. select id, name from congress_members where name like '%erik%'; select count(voter_id) from votes where politician_id=339;
+4. select name, party, location, grade_1996, grade_current, years_in_congress, dw1_score, count(votes.voter_id) as count_votes    from congress_members join votes where congress_members.id = votes.politician_id group by congress_members.id order by count_votes desc limit 3;
+
+5. select name, party, location, grade_1996, grade_current, years_in_congress, dw1_score, count(votes.voter_id) as count_votes from congress_members join votes where congress_members.id = votes.politician_id group by congress_members.id order by count_votes asc limit 3;
