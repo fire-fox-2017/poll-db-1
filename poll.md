@@ -4,7 +4,7 @@
 <!-- SELECT COUNT(*) FROM votes WHERE politician_id = 524; -->
 
 <!-- 2. Sekarang lakukan JOIN tanpa menggunakan id `524`. Query kedua tabel votes dan congress_members. -->
-<!-- SELECT * FROM votes JOIN congress_members ON votes.politician_id = congress_members.id WHERE congress_members.id = 524 -->
+<!-- SELECT * FROM votes JOIN congress_members ON votes.politician_id = congress_members.id WHERE congress_members.name = 'Sen. Olympia Snowe' -->
 
 <!-- 3. Sekarang gimana dengan representative Erik Paulsen? Berapa banyak vote yang dia dapatkan? -->
 <!-- select count(*) from votes join congress_members on votes.politician_id = congress_members.id where congress_members.name = 'Rep. Erik Paulsen'; -->
