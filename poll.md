@@ -19,7 +19,7 @@ congress_members.grade_1996,
 congress_members.grade_current,
 congress_members.years_in_congress,
 congress_members.dw1_score, 
-COUNT(*) FROM votes 
+COUNT(*) as votes_number FROM votes 
 inner join congress_members on votes.politician_id = congress_members.id
 group by politician_id order by count(*) desc 
 limit 3; -->
@@ -34,7 +34,7 @@ congress_members.grade_1996,
 congress_members.grade_current,
 congress_members.years_in_congress,
 congress_members.dw1_score, 
-COUNT(*) FROM votes 
+COUNT(*) as votes_number FROM votes 
 inner join congress_members on votes.politician_id = congress_members.id
 group by politician_id order by count(*) asc 
 limit 3; -->
