@@ -1,0 +1,73 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'sqlite4' ]
+2 info using npm@4.1.2
+3 info using node@v7.7.4
+4 verbose config Skipping project config: C:\Users\INTELAMD/.npmrc. (matches userconfig)
+5 silly loadCurrentTree Starting
+6 silly install loadCurrentTree
+7 silly install readLocalPackageData
+8 silly fetchPackageMetaData sqlite4
+9 silly fetchNamedPackageData sqlite4
+10 silly mapToRegistry name sqlite4
+11 silly mapToRegistry using default registry
+12 silly mapToRegistry registry https://registry.npmjs.org/
+13 silly mapToRegistry data Result {
+13 silly mapToRegistry   raw: 'sqlite4',
+13 silly mapToRegistry   scope: null,
+13 silly mapToRegistry   escapedName: 'sqlite4',
+13 silly mapToRegistry   name: 'sqlite4',
+13 silly mapToRegistry   rawSpec: '',
+13 silly mapToRegistry   spec: 'latest',
+13 silly mapToRegistry   type: 'tag' }
+14 silly mapToRegistry uri https://registry.npmjs.org/sqlite4
+15 verbose request uri https://registry.npmjs.org/sqlite4
+16 verbose request no auth needed
+17 info attempt registry request try #1 at 10:03:49 AM
+18 verbose request id f0061a8f73c09a54
+19 http request GET https://registry.npmjs.org/sqlite4
+20 info retry will retry, error on last attempt: Error: connect ETIMEDOUT 151.101.8.162:443
+21 info attempt registry request try #2 at 10:04:20 AM
+22 http request GET https://registry.npmjs.org/sqlite4
+23 info retry will retry, error on last attempt: Error: connect ETIMEDOUT 151.101.8.162:443
+24 info attempt registry request try #3 at 10:05:41 AM
+25 http request GET https://registry.npmjs.org/sqlite4
+26 silly fetchPackageMetaData Error: connect ETIMEDOUT 151.101.8.162:443
+26 silly fetchPackageMetaData     at Object.exports._errnoException (util.js:1034:11)
+26 silly fetchPackageMetaData     at exports._exceptionWithHostPort (util.js:1057:20)
+26 silly fetchPackageMetaData     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1099:14)
+26 silly fetchPackageMetaData  error for sqlite4 { Error: connect ETIMEDOUT 151.101.8.162:443
+26 silly fetchPackageMetaData     at Object.exports._errnoException (util.js:1034:11)
+26 silly fetchPackageMetaData     at exports._exceptionWithHostPort (util.js:1057:20)
+26 silly fetchPackageMetaData     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1099:14)
+26 silly fetchPackageMetaData   code: 'ETIMEDOUT',
+26 silly fetchPackageMetaData   errno: 'ETIMEDOUT',
+26 silly fetchPackageMetaData   syscall: 'connect',
+26 silly fetchPackageMetaData   address: '151.101.8.162',
+26 silly fetchPackageMetaData   port: 443 }
+27 silly rollbackFailedOptional Starting
+28 silly rollbackFailedOptional Finishing
+29 silly runTopLevelLifecycles Finishing
+30 silly install printInstalled
+31 verbose stack Error: connect ETIMEDOUT 151.101.8.162:443
+31 verbose stack     at Object.exports._errnoException (util.js:1034:11)
+31 verbose stack     at exports._exceptionWithHostPort (util.js:1057:20)
+31 verbose stack     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1099:14)
+32 verbose cwd C:\Users\INTELAMD\poll-db-1
+33 error Windows_NT 6.1.7601
+34 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "sqlite4"
+35 error node v7.7.4
+36 error npm  v4.1.2
+37 error code ETIMEDOUT
+38 error errno ETIMEDOUT
+39 error syscall connect
+40 error network connect ETIMEDOUT 151.101.8.162:443
+41 error network This is most likely not a problem with npm itself
+41 error network and is related to network connectivity.
+41 error network In most cases you are behind a proxy or have bad network settings.
+41 error network
+41 error network If you are behind a proxy, please make sure that the
+41 error network 'proxy' config is set properly.  See: 'npm help config'
+42 verbose exit [ 1, true ]
