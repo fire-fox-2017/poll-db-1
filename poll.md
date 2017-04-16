@@ -1,20 +1,43 @@
 <!-- Release 1  -->
 
-<!-- 1. Hitung jumlah vote untuk Sen. Olympia Snowe yang memiliki id 524. -->
+<!-- 1. Hitung jumlah vote untuk Sen. Olympia Snowe yang memiliki id 524.     
 
-<!-- 2. Sekarang lakukan JOIN tanpa menggunakan id `524`. Query kedua tabel votes dan congress_members. -->
+Answer : select count(*) from votes where politician_id = 524;
+-->
 
-<!-- 3. Sekarang gimana dengan representative Erik Paulsen? Berapa banyak vote yang dia dapatkan? -->
 
-<!-- 4. Buatlah daftar peserta Congress yang mendapatkan vote terbanyak. Jangan sertakan field `created_at` dan `updated_at`. -->
+<!-- 2. Sekarang lakukan JOIN tanpa menggunakan id `524`. Query kedua tabel votes dan congress_members. -
 
-<!-- 5. Sekarang buatlah sebuah daftar semua anggota Congress yang setidaknya mendapatkan beberapa vote dalam urutan dari yang paling sedikit. Dan juga jangan sertakan field-field yang memiliki tipe date. -->
+Answer : select congress_members.* from votes left join congress_members on votes.politician_id = congress_members.id where congress_members.name like "%Sen. Olympia Snowe%";
+
+->
+
+<!-- 3. Sekarang gimana dengan representative Erik Paulsen? Berapa banyak vote yang dia dapatkan?
+
+Answer : select count(votes.id) from votes left join congress_members on votes.politician_id = congress_members.id where congress_members.name like "%Erik Paulsen" ;
+-->
+
+<!-- 4. Buatlah daftar peserta Congress yang mendapatkan vote terbanyak. Jangan sertakan field `created_at` dan `updated_at`.
+
+Answer : select congress_members.id, congress_members.name, congress_members.party, congress_members.location, congress_members.grade_1996, congress_members.grade_current, congress_members.years_in_congress, congress_members.dw1_score,count(votes.id) from votes left join congress_members on congress_members.id = votes.politician_id group by votes.politician_id order by count(votes.id) desc limit 3;
+-->
+
+<!-- 5. Sekarang buatlah sebuah daftar semua anggota Congress yang setidaknya mendapatkan beberapa vote dalam urutan dari yang paling sedikit. Dan juga jangan sertakan field-field yang memiliki tipe date.
+
+Answer : select congress_members.id, congress_members.name, congress_members.party, congress_members.location, congress_members.grade_1996, congress_members.grade_current, congress_members.years_in_congress, congress_members.dw1_score,count(votes.id) from votes left join congress_members on congress_members.id = votes.politician_id group by votes.politician_id order by count(votes.id) asc;
+-->
 
 <!-- Release 2  -->
 
-<!-- 1. Siapa anggota Congress yang mendapatkan vote terbanyak? List nama mereka dan jumlah vote-nya. Siapa saja yang memilih politisi tersebut? List nama mereka, dan jenis kelamin mereka. -->
+<!-- 1. Siapa anggota Congress yang mendapatkan vote terbanyak? List nama mereka dan jumlah vote-nya. Siapa saja yang memilih politisi tersebut? List nama mereka, dan jenis kelamin mereka.
 
-<!-- 2. Berapa banyak vote yang diterima anggota Congress yang memiliki grade di bawah 9 (gunakan field `grade_current`)? Ambil nama, lokasi, grade_current dan jumlah vote. -->
+Answer : select congress_members.name , count(votes.id), voters.first_name,voters.first_name,voters.gender from voters left join votes on voters.id = votes.voter_id left join congress_members on votes.politician_id = congress_members.id group by votes.voter_id order by count(votes.id) desc;
+-->
+
+<!-- 2. Berapa banyak vote yang diterima anggota Congress yang memiliki grade di bawah 9 (gunakan field `grade_current`)? Ambil nama, lokasi, grade_current dan jumlah vote.
+
+Answer : select congress_members.name, congress_members.location, congress_members.grade_current, count(*) from votes left join congress_members on votes.politician_id = congress_members.id where congress_members.grade_current < 9 group by votes.politician_id;
+-->
 
 <!-- 3. Apa saja 10 negara bagian yang memiliki voters terbanyak? List semua orang yang melakukan vote di negara bagian yang paling populer. (Akan menjadi daftar yang panjang, kamu bisa gunakan hasil dari query pertama untuk menyederhanakan query berikut ini.) -->
 
